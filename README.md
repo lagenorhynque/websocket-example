@@ -1,5 +1,7 @@
 # websocket-example
 
+Luminus/Immutant WebSocket example app.
+
 generated using Luminus version "2.9.11.37"
 
 FIXME
