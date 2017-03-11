@@ -11,7 +11,7 @@
 
 (defn disconnect! [channel {:keys [code reason]}]
   (log/info "close code: " code " reason: " reason)
-  (swap! channel #(remove #{channel} %)))
+  (swap! channels #(remove #{channel} %)))
 
 (defn notify-clients! [channel msg]
   (doseq [channel @channels]
