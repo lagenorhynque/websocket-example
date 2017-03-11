@@ -5,7 +5,8 @@
             [compojure.route :as route]
             [websocket-example.env :refer [defaults]]
             [mount.core :as mount]
-            [websocket-example.middleware :as middleware]))
+            [websocket-example.middleware :as middleware]
+            [websocket-example.routes.websockets :refer [websocket-routes]]))
 
 (mount/defstate init-app
                 :start ((or (:init defaults) identity))
@@ -13,13 +14,14 @@
 
 (def app-routes
   (routes
-    (-> #'home-routes
-        (wrap-routes middleware/wrap-csrf)
-        (wrap-routes middleware/wrap-formats))
-    (route/not-found
-      (:body
-        (error-page {:status 404
-                     :title "page not found"})))))
+   websocket-routes
+   (-> #'home-routes
+       (wrap-routes middleware/wrap-csrf)
+       (wrap-routes middleware/wrap-formats))
+   (route/not-found
+    (:body
+     (error-page {:status 404
+                  :title "page not found"})))))
 
 
 (defn app [] (middleware/wrap-base #'app-routes))
