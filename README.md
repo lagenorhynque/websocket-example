@@ -2,6 +2,8 @@
 
 Luminus/Immutant WebSocket example app.
 
+cf. http://www.luminusweb.net/docs/websockets.md
+
 generated using Luminus version "2.9.11.37"
 
 FIXME
