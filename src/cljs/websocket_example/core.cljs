@@ -15,7 +15,7 @@
     (fn []
       [:input.form-control
        {:type :text
-        :placeholder "type in a message and press endter"
+        :placeholder "type in a message and press enter"
         :value @value
         :on-change #(reset! value (-> % .-target .-value))
         :on-key-down #(when (= (.-keyCode %) 13)
